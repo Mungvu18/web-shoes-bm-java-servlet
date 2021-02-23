@@ -47,15 +47,18 @@ public class LoginServlet extends HttpServlet {
         private void login (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String username = request.getParameter("user");
             String password = request.getParameter("pass");
-            List<Account> accounts = new ArrayList<>();
             Account account = loginService.getAccount(username, password);
             if (account == null) {
                 request.setAttribute("mess", "Wrong password or username");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
             } else {
-                accounts.add(account);
-                request.setAttribute("list",accounts);
-                response.sendRedirect("/home_logout");
+                if(account.getRole()== 3) {
+                    response.sendRedirect("/home_logout");
+                }else if(account.getRole()==2){
+                    response.sendRedirect("/home_manager");
+                } else if(account.getRole()==1){
+                    response.sendRedirect("/home_admin");
+                }
             }
         }
 

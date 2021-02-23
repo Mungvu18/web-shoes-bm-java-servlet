@@ -25,13 +25,6 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manager Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Manager Product</a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="login">Login</a>
                     </li>
                 </ul>

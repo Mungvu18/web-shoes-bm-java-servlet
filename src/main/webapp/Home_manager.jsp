@@ -16,7 +16,7 @@
     <!--begin of menu-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="home_logout">Shoes</a>
+            <a class="navbar-brand" href="/home_manager">Shoes</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,12 +27,12 @@
 <%--                    <li class="nav-item">--%>
 <%--                        <a class="nav-link" href="#">Manager Account</a>--%>
 <%--                    </li>--%>
-<%--                    <li class="nav-item">--%>
-<%--                        <a class="nav-link" href="#">Manager Product</a>--%>
-<%--                    </li>--%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/managerProduct">Manager Product</a>
+                    </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Welcome to shop </a>
+                        <a class="nav-link" href="#">Hello Manager </a>
                     </li>
 
                     <li class="nav-item">
@@ -71,7 +71,7 @@
                     <div class="col">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="Home_logout.jsp">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/home_manager">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Category</a></li>
                                 <li class="breadcrumb-item active" aria-current="#">Sub-category</li>
                             </ol>
