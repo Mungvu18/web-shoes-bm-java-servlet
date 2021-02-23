@@ -30,6 +30,25 @@ public class ManagerProductServlet extends HttpServlet {
         switch (action){
             case "":
                 showManagerProductjsp(request,response);
+                break;
+            case "edit":
+                showEditProductJsp(request,response);
+        }
+    }
+
+    private void showEditProductJsp(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("EditProduct.jsp");
+        List<Category> categories = categoryService.fillAll();
+        request.setAttribute("listC",categories);
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        request.setAttribute("o",product);
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -38,6 +57,7 @@ public class ManagerProductServlet extends HttpServlet {
         List<Product> products = productService.fillAll();
         List<Category> categories = categoryService.fillAll();
         request.setAttribute("products",products);
+        request.setAttribute("categories",categories);
         try {
             dispatcher.forward(request,response);
         } catch (ServletException e) {
