@@ -99,7 +99,7 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="add" method="post">
+                    <form action="/managerProduct" method="post">
                         <div class="modal-header">						
                             <h4 class="modal-title">Add Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -118,12 +118,16 @@
                                 <input name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Title</label>
-                                <textarea name="title" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
                                 <label>Description</label>
                                 <textarea name="description" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Id_category</label>
+                                <input name="id_category" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Id_account</label>
+                                <input name="id_account" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
@@ -149,66 +153,27 @@
                 <div class="modal-content">
                     <form action="/managerProduct" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Edit Product</h4>
+                            <h4 class="modal-title">Edit Employee</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>ID</label>
-                                <input value="${o.getId()}" name="id" type="text" class="form-control" readonly required>
-                            </div>
-                            <div class="form-group">
                                 <label>Name</label>
-                                <input value="${o.getName()}" name="name" type="text" class="form-control" required>
+                                <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Image</label>
-                                <input value="${o.getImage()}" name="image" type="text" class="form-control" required>
+                                <label>Email</label>
+                                <input type="email" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Price</label>
-                                <input value="${o.getPrice()}" name="price" type="text" class="form-control" required>
+                                <label>Address</label>
+                                <textarea class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control" required>${o.getDescription()}</textarea>
+                                <label>Phone</label>
+                                <input type="text" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label>Id_category</label>
-                                <input value="${o.getId_category()}" name="id_category" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Id_account</label>
-                                <input value="${o.getId_account()}" name="id_account" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
-                                    <c:forEach items="${listC}" var="o">
-                                        <option value="${o.getId()}">${o.getName()}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-
                         </div>
-<%--                        <div class="modal-body">					--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label>Name</label>--%>
-<%--                                <input type="text" class="form-control" required>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label>Email</label>--%>
-<%--                                <input type="email" class="form-control" required>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label>Address</label>--%>
-<%--                                <textarea class="form-control" required></textarea>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label>Phone</label>--%>
-<%--                                <input type="text" class="form-control" required>--%>
-<%--                            </div>					--%>
-<%--                        </div>--%>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                             <input type="submit" class="btn btn-info" value="Save">

@@ -9,6 +9,15 @@ public class Product {
     private int id_category;
     private int id_account;
 
+    public Product(String name, String image, String description, double price, int id_category, int id_account) {
+        this.name = name;
+        this.image = image;
+        this.description = description;
+        this.price = price;
+        this.id_category = id_category;
+        this.id_account = id_account;
+    }
+
     public Product(int id, String name, String image, String description, double price, int id_category, int id_account) {
         this.id = id;
         this.name = name;

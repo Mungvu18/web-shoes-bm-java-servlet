@@ -72,6 +72,25 @@ public class ManagerProductServlet extends HttpServlet {
             case "delete":
                   deleteProduct(request,response);
                 break;
+            case "add":
+                addProduct(request,response);
+                break;
+        }
+    }
+
+    private void addProduct(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String description = request.getParameter("description");
+        Double price = Double.valueOf(request.getParameter("price"));
+        int id_category = Integer.parseInt(request.getParameter("id_category"));
+        int id_account = Integer.parseInt(request.getParameter("id_account"));
+        Product product = new Product(name,image,description,price,id_category,id_account);
+        productService.save(product);
+        try {
+            response.sendRedirect("/managerProduct");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
