@@ -49,6 +49,10 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
+                                    <label>ID</label>
+                                    <input value="${o.getId()}" name="id" type="text" class="form-control" readonly required>
+                                </div>
+                                <div class="form-group">
                                     <label>Name</label>
                                     <input value="${o.getName()}" name="name" type="text" class="form-control" required>
                                 </div>
@@ -66,11 +70,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Id_category</label>
-                                    <input value="${o.getId_category()}" name="image" type="text" class="form-control" required>
+                                    <input value="${o.getId_category()}" name="id_category" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Id_account</label>
-                                    <input value="${o.getId_account()}" name="image" type="text" class="form-control" required>
+                                    <input value="${o.getId_account()}" name="id_account" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>

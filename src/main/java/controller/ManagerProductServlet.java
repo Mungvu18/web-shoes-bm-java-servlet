@@ -19,7 +19,31 @@ public class ManagerProductServlet extends HttpServlet {
     ProductService productService = new ProductService();
     CategoryService categoryService = new CategoryService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null){
+            action = "";
+        }
+        switch (action){
+            case "edit":
+                editProductJsp(request,response);
+        }
+    }
 
+    private void editProductJsp(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String description = request.getParameter("description");
+        Double price = Double.parseDouble(request.getParameter("price"));
+        int id_category = Integer.parseInt(request.getParameter("id_category"));
+        int id_account = Integer.parseInt(request.getParameter("id_account"));
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = new Product(id,name,image,description,price,id_category,id_account);
+        productService.update(product,id);
+        try {
+            response.sendRedirect("/managerProduct");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
