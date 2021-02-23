@@ -26,6 +26,17 @@ public class ManagerProductServlet extends HttpServlet {
         switch (action){
             case "edit":
                 editProductJsp(request,response);
+                break;
+        }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        try {
+            response.sendRedirect("/managerProduct");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -57,6 +68,10 @@ public class ManagerProductServlet extends HttpServlet {
                 break;
             case "edit":
                 showEditProductJsp(request,response);
+                break;
+            case "delete":
+                  deleteProduct(request,response);
+                break;
         }
     }
 
