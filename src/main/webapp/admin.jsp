@@ -67,8 +67,8 @@
                                 <td>${o.getStatus()}</td>
                                 <td></td>
                                 <td>
-                                    <a href="managerProduct?action=edit&id=${o.getId()}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="managerProduct?action=delete&id=${o.getId()}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="admin?action=edit&id=${o.getId()}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="admin?action=delete&id=${o.getId()}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </c:forEach>

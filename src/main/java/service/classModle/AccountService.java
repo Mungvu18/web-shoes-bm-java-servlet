@@ -4,6 +4,7 @@ import jdbc.ConnectionJDBC;
 import model.Account;
 import service.iService.IAccountService;
 
+import javax.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,9 +55,10 @@ public class AccountService implements IAccountService {
     @Override
     public Account update(Account account, int id) {
         Connection connection = ConnectionJDBC.getConnection();
-        PreparedStatement preparedStatement = null;
+
         try {
-            preparedStatement = connection.prepareStatement("update account set username = ?,password = ?,status= ?, role = ? where id= ?");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "update account set username = ?,password = ?,status= ?, role = ? where id= ?");
             preparedStatement.setInt(5, id);
             preparedStatement.setString(1, account.getUsername());
             preparedStatement.setString(2, account.getPassword());
@@ -124,6 +126,23 @@ public class AccountService implements IAccountService {
             throwables.printStackTrace();
         }
         return accounts;
+    }
+    public void designAccount(int id) {
+        AccountService accountService = new AccountService();
+        Connection connection = ConnectionJDBC.getConnection();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement("update account set status= ? where id= ?");
+            preparedStatement.setInt(2, id);
+            if( accountService.findById(id).getStatus() == "on"){
+                preparedStatement.setString(1, "false");
+            }else if(accountService.findById(id).getStatus()=="false"){
+                preparedStatement.setString(1, "on");
+            }
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
 
