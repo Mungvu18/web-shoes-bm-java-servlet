@@ -5,6 +5,7 @@ import model.Product;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -162,5 +163,27 @@ public class ProductService implements IProductService {
             throwables.printStackTrace();
         }
         return products;
+    }
+    public List<Product> findById_category(int id_category) {
+        List<Product> productList = new ArrayList<>();
+        Connection connection = ConnectionJDBC.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from product where  id_category = ?");
+            preparedStatement.setInt(1, id_category);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String name = resultSet.getString(2);
+                String image = resultSet.getString(3);
+                String description = resultSet.getString(4);
+                Double price = resultSet.getDouble(5);
+                int id = resultSet.getInt(1);
+                int id_account = resultSet.getInt(7);
+                Product product = new Product(id,name,image,description,price,id_category,id_account);
+                productList.add(product);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return productList;
     }
 }

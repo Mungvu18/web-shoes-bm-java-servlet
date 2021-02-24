@@ -75,7 +75,7 @@
                             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                             <ul class="list-group category_block">
                                 <c:forEach items="${categories}" var="o">
-                                    <li class="list-group-item text-white"><a href="#">${o.getName()}</a></li>
+                                    <li class="list-group-item text-white"><a href="category?id=${o.getId()}">${o.getName()}</a></li>
                                 </c:forEach>
 
                             </ul>
@@ -100,7 +100,9 @@
                                 <div class="card">
                                     <img class="card-img-top" style="text-align: center; height: 250px;max-height: 100%;max-width: 100%" src="${o.getImage()}" alt="Not source">
                                     <div class="card-body">
-                                        <h4 class="card-title show_txt"><a href="#" title="View Product">${o.getName()}</a></h4>
+                                        <h4 class="card-title show_txt">
+                                            <a href="/detail"><a href="detail?id=${o.getId()}" title="View Product">${o.getName()}</a></a>
+                                        </h4>
 <%--                                        <p class="card-text show_txt">${o.getDescription()}</p>--%>
                                         <div class="row">
                                             <div class="col">
