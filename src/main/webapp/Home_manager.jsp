@@ -40,7 +40,7 @@
                     </li>
                 </ul>
 
-                <form method="post" class="form-inline my-2 my-lg-0">
+                <form action="/search" method="post" class="form-inline my-2 my-lg-0">
                     <div class="input-group input-group-sm">
                         <input name="txt" type="text" class="form-control" aria-label="Small"
                                aria-describedby="inputGroup-sizing-sm" placeholder="Search...">

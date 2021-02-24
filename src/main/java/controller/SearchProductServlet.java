@@ -19,10 +19,6 @@ public class SearchProductServlet extends HttpServlet {
     ProductService productService = new ProductService();
     CategoryService categoryService = new CategoryService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action==null){
             action = "";
@@ -34,13 +30,19 @@ public class SearchProductServlet extends HttpServlet {
         }
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
     private void showListSearchProduct(HttpServletRequest request, HttpServletResponse response) {
         String txt = request.getParameter("txt");
         List<Product> products = productService.findByName(txt);
         List<Category> categories = categoryService.fillAll();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Home_list_product_search.jsp");
-        request.setAttribute("ps",products);
-        request.setAttribute("cs",categories);
+        List<Product> productList = productService.findBestSale();
+        request.setAttribute("products",products);
+        request.setAttribute("categories",categories);
+        request.setAttribute("productList",productList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Home_login.jsp");
         try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {

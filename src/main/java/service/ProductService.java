@@ -105,6 +105,9 @@ public class ProductService implements IProductService {
         Connection connection = ConnectionJDBC.getConnection();
         PreparedStatement preparedStatement = null;
         try {
+            preparedStatement = connection.prepareStatement("delete from orderdetail where id_product = ?");
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
             preparedStatement = connection.prepareStatement("delete from product where id = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
@@ -139,7 +142,7 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> findByName(String name) {
         Product product = null;
-        List<Product> products = null;
+        List<Product> products = new ArrayList<>();
         Connection connection = ConnectionJDBC.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from product where  name like ?");

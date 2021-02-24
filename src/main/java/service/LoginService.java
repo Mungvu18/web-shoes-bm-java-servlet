@@ -21,8 +21,9 @@ public class LoginService {
                 int id = resultSet.getInt(1);
                 username = resultSet.getString(2);
                 password = resultSet.getString(3);
-                int role = resultSet.getInt(4);
-                account = new Account(id,username,password,role);
+                String status = resultSet.getString(4);
+                int role = resultSet.getInt(5);
+                account = new Account(id,username,password,status,role);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

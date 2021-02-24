@@ -35,13 +35,11 @@ public class HomeLoginServlet extends HttpServlet {
     }
 
     private void showAllProduct(HttpServletRequest request, HttpServletResponse response) {
-        // lấy ra danh sách
         List<Product> products = productService.fillAll();
         List<Category> categories = categoryService.fillAll();
         List<Product> productList = productService.findBestSale();
-        // điều hướng
         RequestDispatcher dispatcher = request.getRequestDispatcher("Home_login.jsp");
-        // đẩy danh sách sang trang jsp
+
         request.setAttribute("products",products);
         request.setAttribute("categories",categories);
         request.setAttribute("productList",productList);

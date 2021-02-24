@@ -34,13 +34,11 @@ public class HomeAdminServlet extends HttpServlet {
     }
 
     private void showHoneManager(HttpServletRequest request, HttpServletResponse response) {
-        // lấy ra danh sách
+
         List<Product> products = productService.fillAll();
         List<Category> categories = categoryService.fillAll();
         List<Product> productList = productService.findBestSale();
-        // điều hướng
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("Home_admin.jsp");
-        // đẩy danh sách sang trang jsp
         request.setAttribute("products",products);
         request.setAttribute("categories",categories);
         request.setAttribute("productList",productList);

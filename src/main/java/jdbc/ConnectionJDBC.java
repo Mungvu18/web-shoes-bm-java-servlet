@@ -10,7 +10,7 @@ public class ConnectionJDBC {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/QLGIAY",
+                    "jdbc:mysql://localhost:3306/qlgiaydanlinh",
                     "root",
                     "123456"
             );
