@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeManagerServlet", urlPatterns = "/home_admin")
+@WebServlet(name = "HomeAdminServlet", urlPatterns = "/home_admin")
 public class HomeAdminServlet extends HttpServlet {
     ProductService productService = new ProductService();
     CategoryService categoryService = new CategoryService();

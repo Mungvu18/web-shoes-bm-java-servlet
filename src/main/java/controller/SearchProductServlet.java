@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeManagerServlet", urlPatterns = "/home_manager")
-public class HomeManagerServlet extends HttpServlet {
+@WebServlet(name = "SearchProductServlet", urlPatterns = "/search")
+public class SearchProductServlet extends HttpServlet {
     ProductService productService = new ProductService();
     CategoryService categoryService = new CategoryService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,23 +24,23 @@ public class HomeManagerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if(action==null){
+        if (action==null){
             action = "";
         }
         switch (action){
             case "":
-                showHoneManager(request,response);
+                showListSearchProduct(request,response);
+                break;
         }
     }
 
-    private void showHoneManager(HttpServletRequest request, HttpServletResponse response) {
-        List<Product> products = productService.fillAll();
+    private void showListSearchProduct(HttpServletRequest request, HttpServletResponse response) {
+        String txt = request.getParameter("txt");
+        List<Product> products = productService.findByName(txt);
         List<Category> categories = categoryService.fillAll();
-        List<Product> productList = productService.findBestSale();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Home_manager.jsp");
-        request.setAttribute("products",products);
-        request.setAttribute("categories",categories);
-        request.setAttribute("productList",productList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Home_list_product_search.jsp");
+        request.setAttribute("ps",products);
+        request.setAttribute("cs",categories);
         try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {

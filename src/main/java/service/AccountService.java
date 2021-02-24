@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountServlet implements IAccountServlet{
+public class AccountService implements IAccountService {
     @Override
     public List<Account> fillAll() {
         List<Account> accounts = new ArrayList<>();
@@ -103,8 +103,9 @@ public class AccountServlet implements IAccountServlet{
     }
 
     @Override
-    public Account findByName(String username) {
+    public List<Account> findByName(String username) {
         Account account = null;
+        List<Account> accounts = null;
         Connection connection = ConnectionJDBC.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from account where  name like ?");
@@ -116,11 +117,12 @@ public class AccountServlet implements IAccountServlet{
                 String status = resultSet.getString(4);
                 int role = resultSet.getInt(5);
                 account = new Account(id,username,password,status,role);
+                accounts.add(account);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return account;
+        return accounts;
     }
 }
 

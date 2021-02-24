@@ -16,7 +16,7 @@
     <!--begin of menu-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/home_manager">Shoes</a>
+            <a class="navbar-brand" href="">Shoes</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,12 +27,12 @@
 <%--                    <li class="nav-item">--%>
 <%--                        <a class="nav-link" href="#">Manager Account</a>--%>
 <%--                    </li>--%>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/managerProduct">Manager Product</a>
-                    </li>
+<%--                    <li class="nav-item">--%>
+<%--                        <a class="nav-link" href="#">Manager Product</a>--%>
+<%--                    </li>--%>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Hello Manager </a>
+                        <a class="nav-link" href="#">Welcome to shop </a>
                     </li>
 
                     <li class="nav-item">
@@ -40,7 +40,7 @@
                     </li>
                 </ul>
 
-                <form method="post" class="form-inline my-2 my-lg-0">
+                <form action="search" method="post" class="form-inline my-2 my-lg-0">
                     <div class="input-group input-group-sm">
                         <input name="txt" type="text" class="form-control" aria-label="Small"
                                aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
@@ -71,7 +71,7 @@
                     <div class="col">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/home_manager">Home</a></li>
+                                <li class="breadcrumb-item"><a href="Home_logout.jsp">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Category</a></li>
                                 <li class="breadcrumb-item active" aria-current="#">Sub-category</li>
                             </ol>
@@ -85,7 +85,7 @@
                         <div class="card bg-light mb-3">
                             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                             <ul class="list-group category_block">
-                                <c:forEach items="${categories}" var="o">
+                                <c:forEach items="${cs}" var="o">
                                     <li class="list-group-item text-white"><a href="#">${o.getName()}</a></li>
                                 </c:forEach>
 
@@ -93,20 +93,20 @@
                         </div>
                         <div class="card bg-light mb-3">
                             <div class="card-header bg-success text-white text-uppercase">New Product</div>
-                            <c:forEach items="${productList}" var="o">
-                            <div class="card-body">
-                                <img class="img-fluid" src="${o.getImage()}" />
-                                <h5 class="card-title">${o.getName()}</h5>
-                                <p class="bloc_left_price">Giá: ${o.getPrice()} VNĐ</p>
-                                <p class="card-text">Sản phẩm mới nhất</p>
-                            </div>
-                            </c:forEach>
+<%--                            <c:forEach items="${ps}" var="o">--%>
+<%--                            <div class="card-body">--%>
+<%--                                <img class="img-fluid" src="${o.getImage()}" />--%>
+<%--                                <h5 class="card-title">${o.getName()}</h5>--%>
+<%--                                <p class="bloc_left_price">Giá: ${o.getPrice()} VNĐ</p>--%>
+<%--                                <p class="card-text">Sản phẩm mới nhất</p>--%>
+<%--                            </div>--%>
+<%--                            </c:forEach>--%>
                         </div>
                     </div>
 
                     <div class="col-sm-9">
                         <div class="row">
-                        <c:forEach items="${products}" var="o">
+                        <c:forEach items="${ps}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
                                     <img class="card-img-top" style="text-align: center; height: 250px;max-height: 100%;max-width: 100%" src="${o.getImage()}" alt="Not source">

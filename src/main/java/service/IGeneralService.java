@@ -8,5 +8,5 @@ public interface IGeneralService <T>{
     T update(T t, int id);
     void delete(int id);
     T findById(int id);
-    T findByName(String name);
+    List<T> findByName(String name);
 }

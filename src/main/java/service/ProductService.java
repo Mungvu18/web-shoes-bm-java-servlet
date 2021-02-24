@@ -137,12 +137,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product findByName(String name) {
+    public List<Product> findByName(String name) {
         Product product = null;
+        List<Product> products = null;
         Connection connection = ConnectionJDBC.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from product where  name like ?");
-            preparedStatement.setString(1, name);
+            preparedStatement.setString(1,"%"+name+"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 int id = resultSet.getInt(1);
@@ -152,10 +153,11 @@ public class ProductService implements IProductService {
                 int id_category = resultSet.getInt(6);
                 int id_account = resultSet.getInt(7);
                 product = new Product(id,name,image,description,price,id_category,id_account);
+                products.add(product);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return product;
+        return products;
     }
 }
