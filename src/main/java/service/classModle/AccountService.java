@@ -1,7 +1,8 @@
-package service;
+package service.classModle;
 
 import jdbc.ConnectionJDBC;
 import model.Account;
+import service.iService.IAccountService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

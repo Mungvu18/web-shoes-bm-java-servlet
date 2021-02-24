@@ -1,4 +1,4 @@
-package service;
+package service.classModle;
 
 import jdbc.ConnectionJDBC;
 import model.Account;

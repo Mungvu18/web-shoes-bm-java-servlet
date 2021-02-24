@@ -1,18 +1,15 @@
-package service;
+package service.classModle;
 
 import jdbc.ConnectionJDBC;
 import model.Product;
+import service.iService.IProductService;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class ProductService implements IProductService {
     public List<Product> findBestSale() {

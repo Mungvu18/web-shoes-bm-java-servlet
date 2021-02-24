@@ -1,7 +1,8 @@
-package service;
+package service.classModle;
 
 import jdbc.ConnectionJDBC;
 import model.Category;
+import service.iService.ICategoryService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryService implements ICategoryService{
+public class CategoryService implements ICategoryService {
     @Override
     public List<Category> fillAll() {
         List<Category> categories = new ArrayList<>();

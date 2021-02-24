@@ -1,9 +1,9 @@
-package controller;
+package controller.search;
 
 import model.Category;
 import model.Product;
-import service.CategoryService;
-import service.ProductService;
+import service.classModle.CategoryService;
+import service.classModle.ProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

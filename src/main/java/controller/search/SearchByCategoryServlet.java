@@ -1,7 +1,7 @@
-package controller;
+package controller.search;
 
 import model.Product;
-import service.ProductService;
+import service.classModle.ProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
