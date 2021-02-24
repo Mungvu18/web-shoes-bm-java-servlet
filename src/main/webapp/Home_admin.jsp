@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home_admin">Admin Account</a>
+                        <a class="nav-link" href="/admin">Admin Account</a>
                     </li>
 <%--                    <li class="nav-item">--%>
 <%--                        <a class="nav-link" href="/managerProduct">Manager Product</a>--%>

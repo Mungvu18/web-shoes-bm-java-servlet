@@ -23,7 +23,7 @@ public class LoginService {
                 password = resultSet.getString(3);
                 String status = resultSet.getString(4);
                 int role = resultSet.getInt(5);
-                account = new Account(id,username,password,status,role);
+                account = new Account(id,username,password,role,status);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
