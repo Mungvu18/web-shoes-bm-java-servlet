@@ -27,18 +27,12 @@ public class ManagerProductServlet extends HttpServlet {
             case "edit":
                 editProductJsp(request,response);
                 break;
+            case "create":
+                addProduct(request,response);
+                break;
         }
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        productService.delete(id);
-        try {
-            response.sendRedirect("/managerProduct");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void editProductJsp(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
@@ -50,6 +44,21 @@ public class ManagerProductServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = new Product(id,name,image,description,price,id_category,id_account);
         productService.update(product,id);
+        try {
+            response.sendRedirect("/managerProduct");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void addProduct(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String description = request.getParameter("description");
+        Double price = Double.valueOf(request.getParameter("price"));
+        int id_category = Integer.parseInt(request.getParameter("id_category"));
+        int id_account = Integer.parseInt(request.getParameter("id_account"));
+        Product product = new Product(name,image,description,price,id_category,id_account);
+        productService.save(product);
         try {
             response.sendRedirect("/managerProduct");
         } catch (IOException e) {
@@ -72,23 +81,20 @@ public class ManagerProductServlet extends HttpServlet {
             case "delete":
                   deleteProduct(request,response);
                 break;
-            case "add":
-                addProduct(request,response);
+            case "create":
+                ShowAddProduct(request,response);
                 break;
         }
     }
 
-    private void addProduct(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
-        String description = request.getParameter("description");
-        Double price = Double.valueOf(request.getParameter("price"));
-        int id_category = Integer.parseInt(request.getParameter("id_category"));
-        int id_account = Integer.parseInt(request.getParameter("id_account"));
-        Product product = new Product(name,image,description,price,id_category,id_account);
-        productService.save(product);
+    private void ShowAddProduct(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("CreateProduct.jsp");
+        List<Category> categories = categoryService.fillAll();
+        request.setAttribute("listC",categories);
         try {
-            response.sendRedirect("/managerProduct");
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -120,6 +126,15 @@ public class ManagerProductServlet extends HttpServlet {
             dispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        try {
+            response.sendRedirect("/managerProduct");
         } catch (IOException e) {
             e.printStackTrace();
         }

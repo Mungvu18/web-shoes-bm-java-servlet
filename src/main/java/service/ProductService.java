@@ -66,7 +66,7 @@ public class ProductService implements IProductService {
         Connection connection = ConnectionJDBC.getConnection();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = connection.prepareStatement("insert into product(name, image, description, price, id_category)\n" +
+            preparedStatement = connection.prepareStatement("insert into product(name, image, description, price, id_category, id_account)\n" +
                     "VALUES(?,?,?,?,?,?)");
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getImage());
